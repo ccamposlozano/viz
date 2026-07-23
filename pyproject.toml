@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "simple_eda"
+version = "0.1.0"
+description = "Un paquete diminuto para análisis exploratorio de datos (EDA) sobre DataFrames de pandas."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [
+    { name = "ccamposlozano", email = "ccamposlozano@dons.usfca.edu" },
+]
+keywords = ["eda", "pandas", "data-analysis", "exploratory"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "pandas",
+]
+
+[project.urls]
+Homepage = "https://github.com/ccamposlozano/viz"
+Repository = "https://github.com/ccamposlozano/viz"
+
+[tool.hatch.build.targets.wheel]
+packages = ["simple_eda"]

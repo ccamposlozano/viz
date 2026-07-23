@@ -8,9 +8,15 @@ Uso rápido:
     df = pd.read_csv("data.csv")
     eda.summarize(df)
     eda.missing(df)
+
+    import matplotlib.pyplot as plt
+    eda.histograms(df)
+    eda.boxplots(df)
+    plt.show()
 """
 
 from .core import summarize, missing
+from .plots import histograms, boxplots
 
-__version__ = "0.1.0"
-__all__ = ["summarize", "missing"]
+__version__ = "0.2.0"
+__all__ = ["summarize", "missing", "histograms", "boxplots"]

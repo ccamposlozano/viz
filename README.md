@@ -6,11 +6,16 @@ sola dependencia, cero complicaciones.
 
 ```python
 import pandas as pd
+import matplotlib.pyplot as plt
 import simple_eda as eda
 
 df = pd.read_csv("data.csv")
-eda.summarize(df)   # forma, tipos y estadísticas por columna
-eda.missing(df)     # valores faltantes por columna
+eda.summarize(df)      # forma, tipos y estadísticas por columna
+eda.missing(df)        # valores faltantes por columna
+
+eda.histograms(df)     # un histograma por columna numérica
+eda.boxplots(df)       # un boxplot por columna numérica
+plt.show()
 ```
 
 ## Instalación
@@ -51,6 +56,30 @@ faltantes = eda.missing(df)
 Pasa `verbose=False` si solo quieres el DataFrame de resultado sin que se
 imprima nada.
 
+### `histograms(df, bins=20, save=None)`
+
+Dibuja con **matplotlib** un histograma por cada columna numérica del
+DataFrame (en una cuadrícula). Devuelve la figura de matplotlib; muéstrala con
+`plt.show()` o guárdala pasando `save="hist.png"`.
+
+```python
+import matplotlib.pyplot as plt
+eda.histograms(df, bins=15)
+plt.show()
+```
+
+### `boxplots(df, save=None)`
+
+Dibuja con **matplotlib** un boxplot por cada columna numérica — ideal para
+ver la mediana, los cuartiles y los valores atípicos. Igual que arriba,
+devuelve la figura y acepta `save`.
+
+```python
+eda.boxplots(df, save="cajas.png")
+```
+
+Las columnas no numéricas se ignoran automáticamente en ambas funciones.
+
 ## Ejemplo completo
 
 ```python
@@ -65,6 +94,11 @@ df = pd.DataFrame({
 
 eda.summarize(df)
 eda.missing(df)
+
+import matplotlib.pyplot as plt
+eda.histograms(df)
+eda.boxplots(df)
+plt.show()
 ```
 
 ## Publicar en PyPI
@@ -87,6 +121,7 @@ python -m twine upload dist/*                          # luego a PyPI
 
 - Python 3.8+
 - pandas
+- matplotlib
 
 ## Licencia
 
